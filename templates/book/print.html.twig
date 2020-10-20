@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            counter-reset: figureNumber;
+        }
+
+        figcaption {
+            counter-increment: figureNumber;
+        }
+
+        figcaption::before {
+            content: counter(figureNumber);
+        }
+
+        @media print {
+
+            @page {
+                size: legal landscape;
+                margin: 20mm 10mm;
+
+                @top-center {
+                    content: "kraakakaka";
+                }
+
+                @bottom-right {
+                    content: counter(page) " of " counter(pages);
+                }
+            }
+
+            footer {
+                position: running(footer);
+                display: block;
+                text-align: center;
+            }
+
+            @page {
+                @bottom-center {
+                    content: element(footer)
+                }
+            }
+        }
+    </style>
+    <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>
+            {{ book.title }}
+        </h1>
+        {{ book.intro | markdown }}
+    </div>
+{% endblock %}

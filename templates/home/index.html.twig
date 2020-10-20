@@ -1,0 +1,216 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            counter-reset: figureNumber;
+        }
+
+        figcaption {
+            counter-increment: figureNumber;
+        }
+
+        figcaption::before {
+            content: counter(figureNumber);
+        }
+
+        @media print {
+
+            @page {
+                size: legal landscape;
+                margin: 20mm 10mm;
+
+                @top-center {
+                    content: "kraakakaka";
+                }
+
+                @bottom-right {
+                    content: counter(page) " of " counter(pages);
+                }
+            }
+
+            footer {
+                position: running(footer);
+                display: block;
+                text-align: center;
+            }
+
+            @page {
+                @bottom-center {
+                    content: element(footer)
+                }
+            }
+        }
+    </style>
+    <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+{% endblock %}
+
+
+{% block body %}
+    <div>
+        <h1 class="title">
+            Header one
+        </h1>
+        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80" alt="asdasd" class="img-fluid">
+        <figcaption>asdasd</figcaption>
+        <figcaption>asdasd</figcaption>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores esse id placeat possimus tempore
+            voluptatum.
+            Doloremque fugiat hic ipsam minus modi natus nostrum optio, quae? Nam nisi odit quibusdam unde.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dolorem doloremque, doloribus dolorum eum
+            excepturi fugiat id magnam minus molestiae, nulla repellendus rerum sunt vitae voluptate. Assumenda et fugit
+            temporibus.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur cum cupiditate est, ex, facilis
+            incidunt iusto nesciunt numquam qui quidem unde voluptatum? Aperiam consequatur debitis et praesentium
+            ullam, ut voluptates!
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, animi cumque delectus eveniet harum id
+            itaque iusto necessitatibus neque nostrum nulla quam, qui quia quo ratione recusandae tempora unde,
+            voluptatibus!
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores esse id placeat possimus tempore
+            voluptatum.
+            Doloremque fugiat hic ipsam minus modi natus nostrum optio, quae? Nam nisi odit quibusdam unde.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dolorem doloremque, doloribus dolorum eum
+            excepturi fugiat id magnam minus molestiae, nulla repellendus rerum sunt vitae voluptate. Assumenda et fugit
+            temporibus.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur cum cupiditate est, ex, facilis
+            incidunt iusto nesciunt numquam qui quidem unde voluptatum? Aperiam consequatur debitis et praesentium
+            ullam, ut voluptates!
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, animi cumque delectus eveniet harum id
+            itaque iusto necessitatibus neque nostrum nulla quam, qui quia quo ratione recusandae tempora unde,
+            voluptatibus!
+        </p>
+        <h1 class="title">
+            Header one
+        </h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores esse id placeat possimus tempore
+            voluptatum.
+            Doloremque fugiat hic ipsam minus modi natus nostrum optio, quae? Nam nisi odit quibusdam unde.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dolorem doloremque, doloribus dolorum eum
+            excepturi fugiat id magnam minus molestiae, nulla repellendus rerum sunt vitae voluptate. Assumenda et fugit
+            temporibus.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur cum cupiditate est, ex, facilis
+            incidunt iusto nesciunt numquam qui quidem unde voluptatum? Aperiam consequatur debitis et praesentium
+            ullam, ut voluptates!
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, animi cumque delectus eveniet harum id
+            itaque iusto necessitatibus neque nostrum nulla quam, qui quia quo ratione recusandae tempora unde,
+            voluptatibus!
+        </p>
+        <h1 class="title">
+            Header one
+        </h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores esse id placeat possimus tempore
+            voluptatum.
+            Doloremque fugiat hic ipsam minus modi natus nostrum optio, quae? Nam nisi odit quibusdam unde.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dolorem doloremque, doloribus dolorum eum
+            excepturi fugiat id magnam minus molestiae, nulla repellendus rerum sunt vitae voluptate. Assumenda et fugit
+            temporibus.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur cum cupiditate est, ex, facilis
+            incidunt iusto nesciunt numquam qui quidem unde voluptatum? Aperiam consequatur debitis et praesentium
+            ullam, ut voluptates!
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, animi cumque delectus eveniet harum id
+            itaque iusto necessitatibus neque nostrum nulla quam, qui quia quo ratione recusandae tempora unde,
+            voluptatibus!
+        </p>
+        <h1 class="title">
+            Header one
+        </h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores esse id placeat possimus tempore
+            voluptatum.
+            Doloremque fugiat hic ipsam minus modi natus nostrum optio, quae? Nam nisi odit quibusdam unde.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dolorem doloremque, doloribus dolorum eum
+            excepturi fugiat id magnam minus molestiae, nulla repellendus rerum sunt vitae voluptate. Assumenda et fugit
+            temporibus.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur cum cupiditate est, ex, facilis
+            incidunt iusto nesciunt numquam qui quidem unde voluptatum? Aperiam consequatur debitis et praesentium
+            ullam, ut voluptates!
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, animi cumque delectus eveniet harum id
+            itaque iusto necessitatibus neque nostrum nulla quam, qui quia quo ratione recusandae tempora unde,
+            voluptatibus!
+        </p>
+        <h1 class="title">
+            Header one
+        </h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores esse id placeat possimus tempore
+            voluptatum.
+            Doloremque fugiat hic ipsam minus modi natus nostrum optio, quae? Nam nisi odit quibusdam unde.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dolorem doloremque, doloribus dolorum eum
+            excepturi fugiat id magnam minus molestiae, nulla repellendus rerum sunt vitae voluptate. Assumenda et fugit
+            temporibus.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur cum cupiditate est, ex, facilis
+            incidunt iusto nesciunt numquam qui quidem unde voluptatum? Aperiam consequatur debitis et praesentium
+            ullam, ut voluptates!
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, animi cumque delectus eveniet harum id
+            itaque iusto necessitatibus neque nostrum nulla quam, qui quia quo ratione recusandae tempora unde,
+            voluptatibus!
+        </p>
+        <h1 class="title">
+            Header one
+        </h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores esse id placeat possimus tempore
+            voluptatum.
+            Doloremque fugiat hic ipsam minus modi natus nostrum optio, quae? Nam nisi odit quibusdam unde.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dolorem doloremque, doloribus dolorum eum
+            excepturi fugiat id magnam minus molestiae, nulla repellendus rerum sunt vitae voluptate. Assumenda et fugit
+            temporibus.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur cum cupiditate est, ex, facilis
+            incidunt iusto nesciunt numquam qui quidem unde voluptatum? Aperiam consequatur debitis et praesentium
+            ullam, ut voluptates!
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, animi cumque delectus eveniet harum id
+            itaque iusto necessitatibus neque nostrum nulla quam, qui quia quo ratione recusandae tempora unde,
+            voluptatibus!
+        </p>
+        <footer>footer</footer>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+body {
+  counter-reset: chapternum;
+}
+
+h1 {
+  page-break-before: always;
+}
+
+h1.title {
+  counter-increment: chapternum;
+}
+
+h1.title::before {
+  content: counter(chapternum) ". ";
+}
+

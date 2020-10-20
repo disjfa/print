@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Book{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+    <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+    <script>
+    var easyMDE = new EasyMDE();
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="container py-3">
+        <h1>Edit Book</h1>
+        <a href="{{ path('book_index') }}" class="btn btn-outline-primary">back to list</a>
+
+        {{ include('book/_form.html.twig', {'button_label': 'Update'}) }}
+
+        {{ include('book/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
