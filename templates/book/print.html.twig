@@ -3,26 +3,13 @@
 {% block stylesheets %}
     {{ parent() }}
     <style>
-        body {
-            counter-reset: figureNumber;
-        }
-
-        figcaption {
-            counter-increment: figureNumber;
-        }
-
-        figcaption::before {
-            content: counter(figureNumber);
-        }
-
         @media print {
-
             @page {
-                size: legal landscape;
+                size: {{ book.size }} {{ book.orientation }};
                 margin: 20mm 10mm;
 
                 @top-center {
-                    content: "kraakakaka";
+                    content: "{{ book.title }}";
                 }
 
                 @bottom-right {
@@ -48,9 +35,9 @@
 
 {% block body %}
     <div>
-        <h1>
-            {{ book.title }}
-        </h1>
+{#        <h1>#}
+{#            {{ book.title }}#}
+{#        </h1>#}
         {{ book.intro | markdown }}
     </div>
 {% endblock %}
