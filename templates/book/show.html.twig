@@ -1,48 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Book{% endblock %}
+{% block title %}{{ book.title }}{% endblock %}
 
 {% block body %}
-    <div class="container py-3">
-        <h1>Book</h1>
+    <div class="container py-3 book">
+        <h1>{{ book.title }}</h1>
+        <div class="py-3">
+            <a href="{{ path('book_index') }}" class="btn btn-outline-primary">back to list</a>
+            <a href="{{ path('book_edit', {'id': book.id}) }}" class="btn btn-outline-primary">edit</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-sm">
+                <tbody>
+                <tr>
+                    <th>Size</th>
+                    <td>{{ book.size }}</td>
+                </tr>
+                <tr>
+                    <th>Orientation</th>
+                    <td>{{ book.orientation }}</td>
+                </tr>
+                <tr>
+                    <th>Created</th>
+                    <td>{{ book.created ? book.created|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Updated</th>
+                    <td>{{ book.updated ? book.updated|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h1>{{ book.title }}</h1>
+        {{ book.intro | markdown }}
+        <a href="{{ path('chapter_new', {'book': book.id}) }}" class="btn btn-outline-primary">Add chapter</a>
 
-        <a href="{{ path('book_index') }}" class="btn btn-outline-primary">back to list</a>
-        <a href="{{ path('book_edit', {'id': book.id}) }}" class="btn btn-outline-primary">edit</a>
-
-        <table class="table">
-            <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ book.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ book.title }}</td>
-            </tr>
-            <tr>
-                <th>Size</th>
-                <td>{{ book.size }}</td>
-            </tr>
-            <tr>
-                <th>Orientation</th>
-                <td>{{ book.orientation }}</td>
-            </tr>
-            <tr>
-                <th>Created</th>
-                <td>{{ book.created ? book.created|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Updated</th>
-                <td>{{ book.updated ? book.updated|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Deleted</th>
-                <td>{{ book.deleted ? 'Yes' : 'No' }}</td>
-            </tr>
-            </tbody>
-        </table>
-
-
-        {{ include('book/_delete_form.html.twig') }}
+        {% for chapter in book.chapters %}
+            <h2>{{ chapter.title }}</h2>
+            <div class="py-3">
+                <a href="{{ path('chapter_edit', {'id': chapter.id}) }}">edit</a>
+            </div>
+            {{ chapter.content | markdown }}
+        {% endfor %}
     </div>
 {% endblock %}

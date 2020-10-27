@@ -34,10 +34,15 @@
 {% endblock %}
 
 {% block body %}
-    <div>
+    <div class="book">
 {#        <h1>#}
 {#            {{ book.title }}#}
 {#        </h1>#}
         {{ book.intro | markdown }}
+
+        {% for chapter in book.chapters %}
+            <h2>{{ chapter.title }}</h2>
+            {{ chapter.content | markdown }}
+        {% endfor %}
     </div>
 {% endblock %}

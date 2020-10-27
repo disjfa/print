@@ -27,13 +27,13 @@ class BookType extends AbstractType
                 'A3' => 'A3',
                 'A2' => 'A2',
                 'A1' => 'A1',
-            ]
+            ],
         ]);
         $builder->add('orientation', ChoiceType::class, [
             'choices' => [
                 'portrait' => 'portrait',
                 'landscape' => 'landscape',
-            ]
+            ],
         ]);
         $builder->add('intro', TextareaType::class, [
             'required' => false,
