@@ -69,7 +69,9 @@ class BookController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('book_index');
+            return $this->redirectToRoute('book_show', [
+                'id' => $book->getId(),
+            ]);
         }
 
         return $this->render('book/edit.html.twig', [
@@ -93,7 +95,7 @@ class BookController extends AbstractController
      */
     public function delete(Request $request, Book $book): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $book->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$book->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($book);
             $entityManager->flush();

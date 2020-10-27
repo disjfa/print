@@ -2,17 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\BookRepository;
+use App\Repository\ChapterRepository;
 use DateTime;
 use DateTimeInterface;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=BookRepository::class)
+ * @ORM\Entity(repositoryClass=ChapterRepository::class)
  * @ORM\HasLifecycleCallbacks()
  */
-class Book
+class Chapter
 {
     /**
      * @ORM\Id
@@ -22,51 +21,45 @@ class Book
     private $id;
 
     /**
-     * @var Chapter[]|ArrayCollection
-     * @ORM\OneToMany(targetEntity="App\Entity\Chapter", mappedBy="book")
+     * @var Book
+     * @ORM\ManyToOne(targetEntity="App\Entity\Book", inversedBy="chapters")
      */
-    private $chapters;
+    private $book;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $size;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $orientation;
-
-    /**
+     * @var string|null
      * @ORM\Column(type="text", nullable=true)
      */
-    private $intro;
+    private $content;
 
     /**
+     * @var DateTime
      * @ORM\Column(type="datetime")
      */
     private $created;
 
     /**
+     * @var DateTime
      * @ORM\Column(type="datetime")
      */
     private $updated;
 
     /**
+     * @var bool
      * @ORM\Column(type="boolean")
      */
     private $deleted;
 
-    public function __construct()
+    public function __construct(Book $book)
     {
         $this->deleted = false;
-        $this->orientation = 'portrait';
-        $this->size = 'A4';
+        $this->book = $book;
     }
 
     public function getId(): ?int
@@ -84,56 +77,24 @@ class Book
         $this->title = $title;
     }
 
-    public function getSize(): ?string
+    public function getBook(): Book
     {
-        return $this->size;
+        return $this->book;
     }
 
-    public function setSize(string $size): void
+    public function setBook(Book $book): void
     {
-        $this->size = $size;
+        $this->book = $book;
     }
 
-    public function getOrientation(): ?string
+    public function getContent(): ?string
     {
-        return $this->orientation;
+        return $this->content;
     }
 
-    public function setOrientation(string $orientation): void
+    public function setContent(?string $content): void
     {
-        $this->orientation = $orientation;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIntro()
-    {
-        return $this->intro;
-    }
-
-    /**
-     * @param mixed $intro
-     */
-    public function setIntro($intro): void
-    {
-        $this->intro = $intro;
-    }
-
-    /**
-     * @return Chapter[]|ArrayCollection
-     */
-    public function getChapters()
-    {
-        return $this->chapters;
-    }
-
-    /**
-     * @param Chapter[]|ArrayCollection $chapters
-     */
-    public function setChapters($chapters): void
-    {
-        $this->chapters = $chapters;
+        $this->content = $content;
     }
 
     public function getCreated(): ?DateTimeInterface

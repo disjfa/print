@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Book{% endblock %}
+{% block title %}Add chapter{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
@@ -13,9 +13,9 @@
 
 {% block body %}
     <div class="container py-3">
-        <h1>Edit Book</h1>
-        <a href="{{ path('book_index') }}" class="btn btn-outline-primary">back to list</a>
+        <h1>Add chapter</h1>
+        <a href="{{ path('book_show', {'id': chapter.book.id}) }}" class="btn btn-outline-primary">back to book</a>
 
-        {{ include('book/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('book/_form.html.twig') }}
     </div>
 {% endblock %}
